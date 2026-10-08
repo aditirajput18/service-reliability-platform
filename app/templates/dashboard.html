@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Service Reliability Platform</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+</head>
+
+<body>
+
+<header class="header">
+    <div>
+        <h1>Service Reliability Platform</h1>
+        <p>Service Registry</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="card">
+        <h2>Register Service</h2>
+
+        <form id="service-form">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Service name"
+                required
+            >
+
+            <input
+                type="url"
+                id="url"
+                placeholder="https://example.com"
+                required
+            >
+
+            <textarea
+                id="description"
+                placeholder="Service description"
+            ></textarea>
+
+            <button type="submit">
+                Register Service
+            </button>
+
+        </form>
+
+        <p id="message"></p>
+    </section>
+
+
+    <section class="card">
+
+        <div class="section-header">
+            <h2>Registered Services</h2>
+
+            <button
+                id="refresh-button"
+                type="button"
+            >
+                Refresh
+            </button>
+        </div>
+
+        <div id="services-container">
+            Loading services...
+        </div>
+
+    </section>
+
+</main>
+
+<script src="/static/js/dashboard.js"></script>
+
+</body>
+</html>

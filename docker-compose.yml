@@ -1,0 +1,15 @@
+services:
+  srp-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: srp-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - srp-data:/app
+    restart: unless-stopped
+
+volumes:
+  srp-data:
+    external: true
