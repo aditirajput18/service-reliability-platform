@@ -395,3 +395,5 @@ def test_metrics_api(test_client):
     assert metrics["failed_checks"] == 1
     assert metrics["uptime_percentage"] == 66.67
     assert metrics["average_response_time_ms"] == 200.0
+def test_ci_failure_demo():
+    assert False
