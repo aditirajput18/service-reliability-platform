@@ -4,3 +4,4 @@ sqlalchemy
 jinja2
 pytest
 httpx
+prometheus-client

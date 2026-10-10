@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from .. import crud, schemas, models
 from ..database import get_db
 from ..health_checker import check_service
+from ..monitoring import record_health_check
 
 
 router = APIRouter(
@@ -217,6 +218,13 @@ def check_registered_service(
         health_result
     )
 
+    # Record Prometheus metrics
+    record_health_check(
+        service_id=service.id,
+        service_name=service.name,
+        status=health_result["status"],
+        response_time_ms=health_result["response_time_ms"],
+    )
     # Check for consecutive failures
     consecutive_failures = crud.get_consecutive_failures(
         db,

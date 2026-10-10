@@ -8,6 +8,8 @@ from fastapi.templating import Jinja2Templates
 from .database import Base, engine
 from .routers import services
 
+from fastapi.responses import Response
+from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -49,3 +51,10 @@ def application_health():
     return {
         "status": "healthy"
     }
+
+@app.get("/metrics", include_in_schema=False)
+def metrics():
+    return Response(
+        content=generate_latest(),
+        media_type=CONTENT_TYPE_LATEST,
+    )
