@@ -38,6 +38,22 @@ SRP monitors registered services, tracks health and response times, detects repe
 | Kubernetes, kind, kubectl | Local orchestration |
 | Git and GitHub | Version control and source hosting |
 
+Implemented
+
+Simulated a Kubernetes deployment failure using an unavailable container image.
+
+Identified ErrImagePull using Kubernetes diagnostic commands.
+
+Restored the previous working Deployment revision using kubectl rollout undo.
+
+Verified application health after rollback.
+
+Confirmed persistent storage remained bound during the recovery process.
+
+Key Learning
+
+Practiced Kubernetes troubleshooting, rollout recovery, and post-incident verification to demonstrate essential DevOps and SRE skills.
+
 ## Project Structure
 
 ```text
