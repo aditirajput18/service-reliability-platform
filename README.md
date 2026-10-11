@@ -1,96 +1,64 @@
-# Service Reliability Platform (SRP)
+ Service Reliability Platform (SRP)
 
-A lightweight Service Reliability Platform built to demonstrate
-practical DevOps and SRE engineering concepts.
+A portfolio-grade Service Reliability Platform built to demonstrate practical DevOps and Site Reliability Engineering (SRE) skills using free, locally runnable tools.
 
-SRP will eventually monitor services, track uptime and response
-times, detect failures, manage incidents, send alerts, and
-demonstrate recovery and rollback.
+SRP monitors registered services, tracks health and response times, detects repeated failures, creates and resolves alerts, manages incidents, exposes Prometheus metrics, and demonstrates containerization and Kubernetes operations.
 
-The project is being developed incrementally in phases so that
-each layer can be tested and understood independently.
+## Implemented Features
 
----
-
-## Phase 1 - Application Foundation
-
-The current phase focuses only on the application foundation.
-
-### Implemented
-
-- FastAPI backend
-- SQLite database
-- SQLAlchemy ORM
-- Service registration
-- Service CRUD APIs
-- Input validation
-- Basic web dashboard
-- Automated pytest tests
-- Isolated test database
-
-### Not implemented yet
-
-The following features belong to later phases:
-
-- Service health monitoring
-- Uptime monitoring
-- Response-time monitoring
-- Alerting
-- Incident management
-- Prometheus
-- Grafana
-- Docker
-- Docker Compose
-- GitHub Actions
-- Trivy
-- Kubernetes
-
----
+- FastAPI REST API and web dashboard
+- Service registration, validation, and CRUD operations
+- Automated health checks and response-time tracking
+- Health-check history and service metrics
+- Alerts after consecutive failures and automatic recovery resolution
+- Incident lifecycle management
+- SQLite persistence using SQLAlchemy
+- Docker and Docker Compose
+- GitHub Actions CI/CD
+- Trivy vulnerability scanning
+- Prometheus metrics and Grafana dashboards
+- Kubernetes deployment using kind
+- Kubernetes ConfigMap, PersistentVolumeClaim, and health probes
+- Pod recovery and persistent-data verification
+- Automated pytest suite
 
 ## Technology Stack
 
 | Technology | Purpose |
 |---|---|
-| Python | Application language |
-| FastAPI | REST API framework |
-| SQLAlchemy | Database ORM |
-| SQLite | Local persistence |
-| HTML/CSS/JavaScript | Dashboard |
+| Python, FastAPI | Application and REST API |
+| SQLAlchemy, SQLite | Data persistence |
+| HTML, CSS, JavaScript | Dashboard |
 | pytest | Automated testing |
-| Git | Version control |
-
----
+| Docker, Docker Compose | Containerization |
+| GitHub Actions | CI/CD |
+| Trivy | Container vulnerability scanning |
+| Prometheus | Metrics collection |
+| Grafana | Monitoring dashboards |
+| Kubernetes, kind, kubectl | Local orchestration |
+| Git and GitHub | Version control and source hosting |
 
 ## Project Structure
 
 ```text
 service-reliability-platform/
-│
 ├── app/
-│   ├── __init__.py
 │   ├── main.py
 │   ├── database.py
 │   ├── models.py
 │   ├── schemas.py
 │   ├── crud.py
-│   │
-│   ├── routers/
-│   │   ├── __init__.py
-│   │   └── services.py
-│   │
-│   └── templates/
-│       └── dashboard.html
-│
-├── static/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── dashboard.js
-│
+│   ├── monitoring.py
+│   └── routers/
 ├── tests/
-│   ├── __init__.py
-│   └── test_services.py
-│
-├── .gitignore
+├── static/
+├── k8s/
+│   ├── kind-config.yaml
+│   ├── srp-configmap.yaml
+│   ├── srp-pvc.yaml
+│   ├── srp-deployment.yaml
+│   └── srp-service.yaml
+├── docker-compose.yml
+├── Dockerfile
 ├── requirements.txt
 └── README.md
