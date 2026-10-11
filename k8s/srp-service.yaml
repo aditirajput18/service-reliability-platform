@@ -1,0 +1,15 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: srp-service
+  namespace: srp
+spec:
+  type: ClusterIP
+  selector:
+    app: srp-app
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
+      protocol: TCP

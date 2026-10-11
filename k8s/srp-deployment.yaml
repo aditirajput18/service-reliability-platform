@@ -1,0 +1,47 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: srp-app
+  namespace: srp
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: srp-app
+  template:
+    metadata:
+      labels:
+        app: srp-app
+    spec:
+      containers:
+        - name: srp-app
+          image: ghcr.io/aditirajput18/service-reliability-platform:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: srp-config
+          volumeMounts:
+            - name: srp-data
+              mountPath: /data
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 20
+      volumes:
+        - name: srp-data
+          persistentVolumeClaim:
+            claimName: srp-data-pvc
+

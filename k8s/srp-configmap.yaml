@@ -1,0 +1,8 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: srp-config
+  namespace: srp
+data:
+  DATABASE_URL: "sqlite:////data/srp.db"
